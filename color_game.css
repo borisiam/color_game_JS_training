@@ -1,5 +1,4 @@
 .square {
-	background: #028fc6;
 	width: 30%;
 	padding-bottom: 30%;
 	float: left;
@@ -11,6 +10,25 @@
 	width: 40%;
 	margin: auto;
 
+}
+
+.container:after{
+    clear: both;
+    content: "";
+    display: block;
+}
+
+button {
+	margin: 20px;
+	font-size: 40px;
+	background-color: orange;
+	border-radius: 20px;
+	border:0px;
+	padding: 5px;
+}
+
+#button_container {
+	text-align: center;
 }
 
 header {
