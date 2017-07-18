@@ -1,0 +1,31 @@
+.square {
+	background: #028fc6;
+	width: 30%;
+	padding-bottom: 30%;
+	float: left;
+	margin: 1.6%;
+	border-radius: 10px;
+}
+
+.container {
+	width: 40%;
+	margin: auto;
+
+}
+
+header {
+	text-align:center;
+	width: 100%;
+}
+
+.winner h1 {
+	color: green;
+}
+
+.winner::before {
+	content: "WINNER!!!--";
+}
+
+.winner::after {
+	content: "--WINNER!!!";
+}
