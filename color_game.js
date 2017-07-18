@@ -4,6 +4,7 @@
 var colorBox = document.querySelector("#colorbox");
 var goalText = document.querySelector("#goal");
 var buttonContainer = document.querySelector("#button_container");
+var gameOn;
 
 // DEFINING SOME FUNCTIONS
 
@@ -58,6 +59,7 @@ function createButton () {
 
 function playGame () {
 	// Decare local variables
+	gameOn = true;
 	var squares = document.querySelectorAll(".square");
 	var goal = colorBox.children[Math.floor(Math.random()*6)].style.background;
 	var choice;
@@ -68,16 +70,23 @@ function playGame () {
 
 		//add event listeners to squares
 		squares[i].addEventListener("click", function () {
+
 			choice = this.style.background;
-			if (choice != goal) {colorBox.removeChild(this);}
-			else{
-				goalText.setAttribute("class","winner");
-				buttonContainer.appendChild(createButton());
-			};
+
+			if (gameOn == true) {
+				if (choice != goal) {colorBox.removeChild(this);}
+				else{
+					goalText.setAttribute("class","winner");
+					buttonContainer.appendChild(createButton());
+					gameOn = false;
+				};
+			};	
 		});
 	};
 
 };
+
+// INTITIALIZING THE GAME
 
 populateColorDivs();
 playGame();
