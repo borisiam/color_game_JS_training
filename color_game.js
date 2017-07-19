@@ -5,7 +5,28 @@ var colorBox = document.querySelector("#colorbox");
 var goalText = document.querySelector("#goal");
 var buttonContainer = document.querySelector("#button_container");
 var gameOn;
+var mode = "easy";
 
+// ADD EVENT LISTENERS MANUALLY
+var easyBtn = document.querySelector("#easy_btn");
+var hardBtn = document.querySelector("#hard_btn");
+var newGameBtn = document.querySelector("#new_colors");
+
+easyBtn.addEventListener("click", function(){
+	mode = "easy";
+	easyBtn.classList.add("selected");
+	hardBtn.classList.remove("selected",1);
+ });
+
+hardBtn.addEventListener("click", function(){
+	mode = "hard";
+	hardBtn.classList.add("selected");
+	easyBtn.classList.remove("selected",1);
+ });
+
+newGameBtn.addEventListener("click", function(){
+	resetTheGame();
+ });
 // DEFINING SOME FUNCTIONS
 
 function generateColor () {
@@ -16,11 +37,26 @@ function generateColor () {
 	return color;
 };
 
+function generateEasyColor() {
+	var r = Math.round(255 /(1 +Math.floor(Math.random()*3)));
+	var g = Math.round(255 /(1 +Math.floor(Math.random()*3)));
+	var b = Math.round(255 /(1 +Math.floor(Math.random()*3)));
+	var color = `rgb(${r}, ${g}, ${b})`;
+	return color;
+}
+
 function createColorDiv () {
 	//creates divs with class square
 	var div = document.createElement("div");
 	div.setAttribute("class","square");
-	div.style.background = generateColor();
+
+	if (mode === "hard") {
+		div.style.background = generateColor();
+	}
+	else{
+		div.style.background = generateEasyColor();
+	};
+	
 	return div;
 };
 
@@ -51,10 +87,18 @@ function resetTheGame () {
 function createButton () {
 	var button = document.createElement("button");
 	button.innerHTML = "PLAY AGAIN";
+	button.setAttribute("id","pop_btn");
 	button.addEventListener("click", function () {
 		resetTheGame();
 	});
 	return button;
+};
+
+function squaresChangeColors (clickedDiv) {
+	var clickedColor = clickedDiv.style.background;
+	for (var n = 0; n < colorBox.children.length; n++) {
+		colorBox.children[n].style.background = clickedColor;
+	};
 };
 
 function playGame () {
@@ -74,11 +118,12 @@ function playGame () {
 			choice = this.style.background;
 
 			if (gameOn == true) {
-				if (choice != goal) {colorBox.removeChild(this);}
+				if (choice != goal) {this.style.background = "white";}
 				else{
 					goalText.setAttribute("class","winner");
 					buttonContainer.appendChild(createButton());
 					gameOn = false;
+					squaresChangeColors(this);
 				};
 			};	
 		});
