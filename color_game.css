@@ -16,7 +16,7 @@ body {
 	background-color: #f7f7f7;
 }
 
-h2, p {
+h2 {
 	font-family: gothica;
 	font-weight: 300;
 }
@@ -29,6 +29,7 @@ h2, p {
 
 .selected {
 	background-color: black;
+	color: white;
 }
 
 .selected p {
@@ -54,6 +55,9 @@ h2, p {
 	float: left;
 	margin: 1.6%;
 	border-radius: 10px;
+	transition: background 0.4s;
+	-webkit-transition: background 0.4s;
+	-moz-transition: background 0.4s;
 }
 
 .container {
@@ -75,6 +79,8 @@ h2, p {
 	border-radius: 20px;
 	border:0px;
 	padding: 5px;
+	width: 40%;
+	height: 40%;
 }
 
 #button_container {
@@ -103,6 +109,17 @@ button {
 	background-color: #f7f7f7;
 	height: 28px;
 	outline: none;
+	font-family: gothica;
+	font-weight: 300;
+	font-size: 20px;
+	border-radius: 5px;
+	transition: all 0.3s;
+	-webkit-transition: all 0.4s;
+	-moz-transition: all 0.4s;
+}
+
+.fright {
+	float: right;
 }
 
 #menu {
@@ -121,7 +138,7 @@ button {
 }
 
 .btns {
-	width: 20%;
+	width: 30%;
 	height: 100%;
 }
 
@@ -130,7 +147,7 @@ button {
 }
 
 #status_container {
-	width: 60%;
+	width: 40%;
 }
 
 #status {

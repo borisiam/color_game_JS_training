@@ -16,12 +16,14 @@ easyBtn.addEventListener("click", function(){
 	mode = "easy";
 	easyBtn.classList.add("selected");
 	hardBtn.classList.remove("selected",1);
+	resetTheGame();
  });
 
 hardBtn.addEventListener("click", function(){
 	mode = "hard";
 	hardBtn.classList.add("selected");
 	easyBtn.classList.remove("selected",1);
+	resetTheGame();
  });
 
 newGameBtn.addEventListener("click", function(){
@@ -79,6 +81,7 @@ function resetTheGame () {
 
 	// Remove the winner sign
 	goalText.classList.remove("winner");
+	newGameBtn.textContent = "New colors";
 
 	populateColorDivs();
 	playGame();
@@ -126,7 +129,7 @@ function playGame () {
 				}
 				else{
 					status.textContent = "CORRECT";
-					buttonContainer.appendChild(createButton());
+					newGameBtn.textContent = "Play again";
 					gameOn = false;
 					squaresChangeColors(this);
 				};
