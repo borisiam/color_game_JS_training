@@ -106,6 +106,7 @@ function playGame () {
 	gameOn = true;
 	var squares = document.querySelectorAll(".square");
 	var goal = colorBox.children[Math.floor(Math.random()*6)].style.background;
+	var status = document.querySelector("#status");
 	var choice;
 	//Body
 	goalText.textContent = goal;
@@ -118,9 +119,13 @@ function playGame () {
 			choice = this.style.background;
 
 			if (gameOn == true) {
-				if (choice != goal) {this.style.background = "white";}
+				if (choice != goal) {
+					this.style.background = "#f7f7f7";
+					status.textContent = "try another one";
+
+				}
 				else{
-					goalText.setAttribute("class","winner");
+					status.textContent = "CORRECT";
 					buttonContainer.appendChild(createButton());
 					gameOn = false;
 					squaresChangeColors(this);

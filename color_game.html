@@ -7,12 +7,17 @@
 <body>
 
 <header id="header">
-		<h2 class="margineless">GUESS THIS COLOR</h1>	
+		<h2 class="margineless"><i>Guess the color</i></h1>	
 		<h1 id="goal">F</h1>
 		<div id="menu">
-			<button id="new_colors"><p>New colors</p></button>
-			<button id="easy_btn"><p>Easy</p></button>
-			<button id="hard_btn"><p>Hard</p></button>
+			<div class="menu_item btns">
+				<button id="new_colors"><p>New colors</p></button>
+			</div>
+			<div class="menu_item" id="status_container"><h2 id="status"><i>game</i></h2></div>
+			<div class="menu_item btns">
+				<button id="easy_btn" class="selected"><p>Easy</p></button>
+				<button id="hard_btn"><p>Hard</p></button>
+			</div>
 		</div>
 </header>
 <div id="more_global_container">
